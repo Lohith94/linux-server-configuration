@@ -20,3 +20,11 @@ To take a baseline installation of a Linux server and prepare it to host your we
 * libpq-dev
 * Psycopg2
 * Feedparser
+## Configuration steps
+### Create an instance with Amazon Lightsail
+* Sign in to [Amazon Lightsail](https://aws.amazon.com/lightsail/) using an Amazon Web Services account
+* Follow the 'Create an instance' link
+* Choose the 'OS Only' and 'Ubuntu 16.04 LTS' options
+* Choose a payment plan
+* Give the instance a unique name and click 'Create'
+* Wait for the instance to start up
