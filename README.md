@@ -106,6 +106,10 @@ User grader may run the following commands on
 * Log in as the ```grade```r using the following command:
 ```ssh -i ~/.ssh/grader_key -p 2200 grader@XX.XX.XX.XX```
 Note that a pop-up window will ask for ```grader```'s password.
+### Configure the local timezone to UTC
+* Run ```sudo dpkg-reconfigure tzdata```, and follow the instructions (UTC is under the 'None of the above' category)
+* Test to make sure the timezone is configured correctly by running ```date```
+
 
 
 
