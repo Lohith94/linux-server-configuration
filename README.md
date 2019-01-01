@@ -73,6 +73,25 @@ Note: As mentioned above, connecting to the instance through a browser now no lo
 * Enter in a new UNIX password (twice) when prompted
 * Fill out information for the new ```grader``` user
 * To switch to the ```grader``` user, run ```su - grader```, and enter the password
+### Give ```grader``` user sudo permissions
+* Run ```sudo visudo```
+* Search for a line that looks like this:
+```root ALL=(ALL:ALL) ALL```
+* Add the following line below this one:
+```grader ALL=(ALL:ALL) ALL```
+* Save and close the visudo file
+* To verify that grader has sudo permissions, ```su``` as ```grader``` (run ```su - grader```), enter the password, and run ```sudo -l```; after entering in the password (again), a line like the following should appear, meaning grader has sudo permissions:
+```
+Matching Defaults entries for grader on
+    ip-XX-XX-XX-XX.ec2.internal:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User grader may run the following commands on
+	ip-XX-XX-XX-XX.ec2.internal:
+    (ALL : ALL) ALL
+```
+
 
 
 
