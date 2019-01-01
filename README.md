@@ -109,7 +109,9 @@ Note that a pop-up window will ask for ```grader```'s password.
 ### Configure the local timezone to UTC
 * Run ```sudo dpkg-reconfigure tzdata```, and follow the instructions (UTC is under the 'None of the above' category)
 * Test to make sure the timezone is configured correctly by running ```date```
-
+### Install and configure Apache
+* Run ```sudo apt-get install apache2``` to install Apache
+* Check to make sure it worked by using the public IP of the Amazon Lightsail instance as as a URL in a browser; if Apache is working correctly, a page with the title 'Apache2 Ubuntu Default Page' should load
 
 
 
