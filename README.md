@@ -68,6 +68,11 @@ To                         Action      From
 * Now, to login (on a Mac), open up the Terminal and run:
 ```ssh -i ~/.ssh/lightrail_key.rsa -p 2200 ubuntu@XX.XX.XX.XX```, where XX.XX.XX.XX is the public IP address of the instance
 Note: As mentioned above, connecting to the instance through a browser now no longer works; this is because Lightsail's browser-based SSH access only works through port ```22```, which is now denied.
+### Create a new user named ```grader```
+* Run sudo adduser grader
+* Enter in a new UNIX password (twice) when prompted
+* Fill out information for the new ```grader``` user
+* To switch to the ```grader``` user, run ```su - grader```, and enter the password
 
 
 
