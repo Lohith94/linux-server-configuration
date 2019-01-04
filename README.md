@@ -262,7 +262,15 @@ application.secret_key = '12345'
 ### Switch the database in the application from SQLite to PostgreSQL
 * Replace line 38 in ```__init__.py```, line 85 in ```database_setup.py```, and line 7 in ```populator.py``` with the following:
 ```engine = create_engine('postgresql://catalog:INSERT_PASSWORD_FOR_DATABASE_HERE@localhost/catalog')```
-
+### Disable the default Apache site
+* At some point during the configuration, the default Apache site will likely need to be disabled; to do this, run ```sudo a2dissite 000-default.conf```
+* The following prompt will be returned:
+```
+Site 000-default disabled.
+To activate the new configuration, you need to run:
+  service apache2 reload
+  ```
+* Run ```sudo service apache2 reload```
 
 
 
