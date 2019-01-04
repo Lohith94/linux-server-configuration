@@ -116,8 +116,15 @@ Note that a pop-up window will ask for ```grader```'s password.
 * Install the ```mod_wsgi``` package (which is a tool that allows Apache to serve Flask applications) along with ```python-dev``` (a package with header files required when building Python extensions); use the following command:
 ```sudo apt-get install libapache2-mod-wsgi python-dev```
 * Make sure mod_wsgi is enabled by running ```sudo a2enmod wsgi```
-
-
-
+### Install PostgreSQL and make sure PostgreSQL is not allowing remote connections
+* Install PostgreSQL by running ```sudo apt-get install postgresql```
+* Open the ```/etc/postgresql/9.5/main/pg_hba.conf``` file
+* Make sure it looks like this (comments have been removed here for easier reading):
+```
+local   all             postgres                                peer
+local   all             all                                     peer
+host    all             all             127.0.0.1/32            md5
+host    all             all             ::1/128                 md5
+```
 
 
