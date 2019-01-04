@@ -188,7 +188,27 @@ app.run()
 ```
 * Delete, rename, or move the ```database_setup.py``` file to another directory
 Note: the default database for the neuvo-mexico application is SQLite. The original database_setup.py file in the repository is configured for a SQLite database, and the database_setup_postgres.py file is configured for PostgreSQL (only one change must be made to the file; see the "Switch the database in the application from SQLite to PostgreSQL" section below).
-
+### Set up a vitual environment and install dependencies
+* Start by installing pip (if it isn't installed already) with the following command:
+```sudo apt-get install python-pip```
+* Install virtualenv with ```apt-get``` by running ```sudo apt-get install python-virtualenv```
+* Change to the ```/var/www/item_catalog/Item_catalog/``` directory; choose a name for a temporary environment ('venv' is used in this example), and create this environment by running ```virtualenv venv``` (make sure to not use sudo here as it can cause problems later on)
+* Activate the new environment, ```venv```, by running ```. venv/bin/activate```
+* With the virtual environment active, install the following dependenies (note: with the exception of the ```libpq-dev``` package, make sure to not use sudo for any of the package installations as this will cause the packages to be installed globally rather than within the virtualenv):
+```
+pip install httplib2
+pip install requests
+pip install --upgrade oauth2client
+pip install sqlalchemy
+pip install flask
+sudo apt-get install libpq-dev (Note: this will install to the global evironment)
+pip install psycopg2
+```
+* In order to make sure everything was installed correctly, run ```python __init__.py```; the following (among other things) should be returned:
+```
+Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+Deactivate the virtual environment by running deactivate
+```
 
 
 
