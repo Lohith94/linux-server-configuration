@@ -277,7 +277,12 @@ To activate the new configuration, you need to run:
 Note: if changes need to be made to the project files after the ownership of the directories has been switched to www-data, it is best to edit files as the www-data user; do this with the following command:
 ```sudo -u www-data vim INSERT_NAME_OF_FILE```
 (Note: vim can be replaced here with nano or another text editor.)
-
+### Set up the database schema and populate the database
+* While in the ```/var/www/nuevoMexico/nuevoMexico/``` directory, activate the virtualenv by running ```. venv/bin/activate```
+* Then run ```python database_setup.py```
+* Deactivate the virtualenv (run ```deactivate```)
+* Resart Apache again: ```sudo service apache2 restart```
+* Now open up a browser and check to make sure the app is working by going to``` http://XX.XX.XX.XX``` or ```http://ec2-XX-XX-XX-XX.compute-1.amazonaws.com```
 
 
 
