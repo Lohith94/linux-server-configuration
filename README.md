@@ -259,7 +259,9 @@ from item_catalog import app as application
 application.secret_key = '12345'
 ```
 * Resart Apache: ```sudo service apache2 restart```
-
+### Switch the database in the application from SQLite to PostgreSQL
+* Replace line 38 in ```__init__.py```, line 85 in ```database_setup.py```, and line 7 in ```populator.py``` with the following:
+```engine = create_engine('postgresql://catalog:INSERT_PASSWORD_FOR_DATABASE_HERE@localhost/catalog')```
 
 
 
