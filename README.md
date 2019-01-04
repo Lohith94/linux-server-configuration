@@ -150,6 +150,37 @@ Type "help", "copyright", "credits" or "license" for more information.
  ```
 * Exit psql by running ```\q```
 * Switch back to the ubuntu user by running ```exit```
+### Create a Linux user called ```catalog``` and a new PostgreSQL database
+1. Create a new Linux user called ```catalog```:
+..* run ```sudo adduser catalog```
+..* enter in a new UNIX password (twice) when prompted
+..* fill out information for ```catalog```
+1. Give the ```catalog``` user sudo permissions:
+..* run ```sudo visudo```
+..* search for a line that looks like this: ```root ALL=(ALL:ALL) ALL```
+..* add the following line below this one: ```catalog ALL=(ALL:ALL) ALL```
+..* save and close the visudo file
+..* to verify that ```catalog``` has sudo permissions, su as catalog (run ```sudo su - catalog```), and run ```sudo -l```
+..* after entering in the UNIX password, a line like the following should appear (meaning catalog has sudo permissions):
+ ``` 
+ User catalog may run the following commands on
+ 	ip-XX-XX-XX-XX.ec2.internal:
+     (ALL : ALL) ALL
+ ```
+1. While logged in as catalog, create a database called catalog by running ```createdb catalog```
+1. Run ```psql``` and then run ```\l``` to see that the new database has been created
+1. Switch back to the ubuntu user by running ```exit```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
