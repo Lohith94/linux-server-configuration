@@ -112,8 +112,10 @@ Note that a pop-up window will ask for ```grader```'s password.
 ### Install and configure Apache
 * Run ```sudo apt-get install apache2``` to install Apache
 * Check to make sure it worked by using the public IP of the Amazon Lightsail instance as as a URL in a browser; if Apache is working correctly, a page with the title 'Apache2 Ubuntu Default Page' should load
-
-
+### Install mod_wsgi
+* Install the ```mod_wsgi``` package (which is a tool that allows Apache to serve Flask applications) along with ```python-dev``` (a package with header files required when building Python extensions); use the following command:
+```sudo apt-get install libapache2-mod-wsgi python-dev```
+* Make sure mod_wsgi is enabled by running ```sudo a2enmod wsgi```
 
 
 
