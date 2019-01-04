@@ -134,8 +134,22 @@ Python 2.7.12 (default, Nov 19 2016, 06:48:10)
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
-
-
+### Create a new PostgreSQL user named catalog with limited permissions
+* PostgreSQL creates a Linux user with the name postgres during installation; switch to this user by running ```sudo su - postgres``` (for security reasons, it is important to only use the postgres user for accessing the PostgreSQL software)
+* Connect to psql (the terminal for interacting with PostgreSQL) by running ```psql```
+* Create the catalog user by running ```CREATE ROLE catalog WITH LOGIN;```
+* Next, give the catalog user the ability to create databases: ```ALTER ROLE catalog CREATEDB;```
+* Finally, give the catalog user a password by running ```\password catalog```
+* Check to make sure the catalog user was created by running ```\du```; a table of sorts will be returned, and it should look like this:
+```
+				   List of roles
+ Role name |                         Attributes                         | Member of 
+-----------+------------------------------------------------------------+-----------
+ catalog   | Create DB                                                  | {}
+ postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ ```
+* Exit psql by running ```\q```
+* Switch back to the ubuntu user by running ```exit```
 
 
 
