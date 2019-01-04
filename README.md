@@ -209,7 +209,39 @@ pip install psycopg2
 Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 Deactivate the virtual environment by running deactivate
 ```
-
+### Set up and enable a virtual host
+* Create a file in ```/etc/apache2/sites-available/``` called ```item_catalog.conf```
+* Add the following into the file:
+```
+<VirtualHost *:80>
+		ServerName XX.XX.XX.XX
+		ServerAdmin ben.in.campbell@gmail.com
+		WSGIScriptAlias / /var/www/nuevoMexico/nuevoMexico.wsgi
+		<Directory /var/www/nuevoMexico/nuevoMexico/>
+			Order allow,deny
+			Allow from all
+			Options -Indexes
+		</Directory>
+		Alias /static /var/www/nuevoMexico/nuevoMexico/static
+		<Directory /var/www/nuevoMexico/nuevoMexico/static/>
+			Order allow,deny
+			Allow from all
+			Options -Indexes
+		</Directory>
+		ErrorLog ${APACHE_LOG_DIR}/error.log
+		LogLevel warn
+		CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+Note: the Options -Indexes lines ensure that listings for these directories in the browser is disabled.
+* Run ```sudo a2ensite item_catalog``` to enable the virtual host
+* The following prompt will be returned:
+```
+Enabling site nuevoMexico
+To activate the new configuration, you need to run:
+  service apache2 reload
+  ```
+* Run ```sudo service apache2 reload```
 
 
 
