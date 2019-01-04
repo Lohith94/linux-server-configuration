@@ -126,5 +126,16 @@ local   all             all                                     peer
 host    all             all             127.0.0.1/32            md5
 host    all             all             ::1/128                 md5
 ```
+### Make sure Python is installed
+* Python should already be installed on a machine running Ubuntu 18.04. To verify, simply run python. Something like the following should appear:
+```
+Python 2.7.12 (default, Nov 19 2016, 06:48:10) 
+[GCC 5.4.0 20160609] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+```
+
+
+
 
 
