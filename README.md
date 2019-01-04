@@ -271,6 +271,12 @@ To activate the new configuration, you need to run:
   service apache2 reload
   ```
 * Run ```sudo service apache2 reload```
+### Change the ownership of the project direcotries
+* Change the ownership of the project directories and files to the www-data user (this is done because Apache runs as the www-data user); while in the ```/var/www directory```, run:
+```sudo chown -R www-data:www-data item_catalog/```
+Note: if changes need to be made to the project files after the ownership of the directories has been switched to www-data, it is best to edit files as the www-data user; do this with the following command:
+```sudo -u www-data vim INSERT_NAME_OF_FILE```
+(Note: vim can be replaced here with nano or another text editor.)
 
 
 
