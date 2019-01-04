@@ -170,6 +170,24 @@ Type "help", "copyright", "credits" or "license" for more information.
 1. While logged in as catalog, create a database called catalog by running ```createdb catalog```
 1. Run ```psql``` and then run ```\l``` to see that the new database has been created
 1. Switch back to the ubuntu user by running ```exit```
+### Install git and clone the catalog project
+* Run ```sudo apt-get install git```
+* Create a directory called ```item_catalog``` in the ```/var/www/``` directory
+* Change to the 'item_catalog' directory, and clone the catalog project:
+```sudo git clone https://github.com/lohithj94/item_catalog.git item_catalog```
+Note: the "item_catalog" part at the end simply changes the directory name for the repository to 'item_catalog' instead of the default 'item-catalog'; this avoids problems later on as Apache does not like hyphens very much
+* Change the ownership of the 'item_catalog' directory to ubuntu by running (while in /var/www):
+sudo chown -R ubuntu:ubuntu item_catalog/
+* Change to the /var/www/item_catalog/Item_catalog directory
+* Change the name of the application.py file to ```__init__.py``` by running ```mv application.py __init__.py```
+In ```__init__.py```, find line 508:
+```
+app.run(host='0.0.0.0', port=8000)
+Change this line to:
+app.run()
+```
+* Delete, rename, or move the ```database_setup.py``` file to another directory
+Note: the default database for the neuvo-mexico application is SQLite. The original database_setup.py file in the repository is configured for a SQLite database, and the database_setup_postgres.py file is configured for PostgreSQL (only one change must be made to the file; see the "Switch the database in the application from SQLite to PostgreSQL" section below).
 
 
 
