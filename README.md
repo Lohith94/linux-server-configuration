@@ -283,6 +283,77 @@ Note: if changes need to be made to the project files after the ownership of the
 * Deactivate the virtualenv (run ```deactivate```)
 * Resart Apache again: ```sudo service apache2 restart```
 * Now open up a browser and check to make sure the app is working by going to``` http://XX.XX.XX.XX``` or ```http://ec2-XX-XX-XX-XX.compute-1.amazonaws.com```
+### A few helpful commands to know
+* Below is a list of commands that could be useful while setting up the server.
+```lsb_release -a```
+* Find out what version of Ubuntu is running
+```whoami```
+* Find out which user you are logged in as
+```
+>> import flask
+>> flask.__version__
+```
+* Find out which version of Flask is installed (run this within Python)
+```sudo service apache2 restart```
+* Restart Apache (use this to make sure updates are reflected on the app)
+```virtualenv --version```
+* Find out which verison of virtualenv is running
+```which python```
+* Find out where Python has been installed
+(Note: this is especially useful when making sure that the virtualenv is working correctly; when the virtualenv is activated and set up correctly, running which python should not return ```/usr/bin/python``` but rather the file path to the directory where the virtualenv is located)
+```vi + /var/log/apache2/error.log```
+* View Apache error logs, and open the file starting with the last line (note: ```vi``` can be replaced here with nano or another text editor)
+```sudo rm -rf INSERT_NAME_OF_VIRTUALENV_HERE```
+* Delete a virtualenv and all of it's directories (be careful; this can't be undone)
+```dropdb INSERT_NAME_OF_DATABASE```
+* Drop (delete) a PostgreSQL database; this is helpful if changes are made to the ```database_setup.py``` file; the current database should always be dropped and a new one created (run this command while logged in as the catalog user)
+```sudo apachectl stop and sudo apachectl start```
+* Stop and start Apache; stopping Apache breaks the database session, which makes it possible to drop a database
+###  Some potentially useful information while configuring the server
+#### Rebooting the virtual machine
+* When logging in to the virtual machine, the following prompt may appear:
+```*** System restart required ***```
+* To restart the machine, simply run ```sudo reboot```
+Note: it is important to keep in mind, that whenever the machine is rebooted, all information in RAM will disappear, the SSH session will end, and the machine will be offline for several minutes.
+* After waiting a few minutes, SSH back into the machine as normal
+#### Dropping and recreating a database
+* At some point in the configuration, it may be necessary to drop the catalog database and recreate it. Here is one way to do that:
+* Stop Apache by running ```sudo apachectl stop```
+* Switch to the postgres user and enter psql: ```sudo -u postgres psql```
+* Drop the current database (which is presumably called 'catalog'): ```drop database catalog;```
+* Recreate the database: ```create database catalog owner catalog;```
+* Exit PostgreSQL and psql (run ```exit```)
+* Activate the virtual environmen:``` . venv/bin/activate```
+* Run ```python populator.py```
+* Deactivate the virtual environment (```deactivate```)
+* Start Apache: ```sudo apachectl start```
+#### Setting up SQLAlchemy logging
+* At some point in the configuration, viewing logged SQLAlchemy information and errors may be userful. To do this, simply add the following into the imports section of the ```__init__.py``` file:
+```
+import logging
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
+```
+The SQLAlchemy logs will be added to the ```/var/log/apache2/error.log``` file.
+### Fixing sudo: unable to resolve host ip-XX-XX-XX-XX error
+* Open the ```/etc/hostname``` file (```/etc/hostname``` contains the name of the machine)
+* Copy the file (it should say nothing more than ip-10-20-29-203, for example)
+* Paste this into the first line of the /etc/hosts file, and add the following before it:
+```localhost.localdomain```
+* To be clear: the first line of the file should look like something this:
+```127.0.0.1 localhost localhost.localdomain ip-10-20-29-203)```
+* Run ```sudo hostname``` to make sure it worked; if it worked, something such as ```ip-10-20-29-203``` will be returned
+### Fixing a servername error with Apache
+When installing Apache, the following error may appear:
+```
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.0.1. Set the 'ServerName' directive globally to suppress this message
+```
+* To fix this, open up the ```/etc/apache2/apache2.conf``` file
+* Add in the following line at the end of the file:
+```ServerName localhost```
+* Restart Apache by running ```sudo service apache2 restart```
+* If it did not work, the same error message will appear when restarting Apache
+Note: this change will be overwritten when Apache is updated.
 
 
 
