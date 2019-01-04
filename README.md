@@ -242,6 +242,23 @@ To activate the new configuration, you need to run:
   service apache2 reload
   ```
 * Run ```sudo service apache2 reload```
+### Write a .wsgi file
+* Apache serves Flask applications by using a ```.wsgi file```; create a file called```item_catalog.wsgi``` in ```/var/www/item_catalog```
+* Add the following to the file:
+```
+activate_this = '/var/www/nuevoMexico/nuevoMexico/venv/bin/activate_this.py'
+execfile(activate_this, dict(__file__=activate_this))
+
+#!/usr/bin/python
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/item_catalog/")
+
+from item_catalog import app as application
+application.secret_key = '12345'
+```
+* Resart Apache: ```sudo service apache2 restart```
 
 
 
