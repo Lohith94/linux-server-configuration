@@ -152,7 +152,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 * Switch back to the ubuntu user by running ```exit```
 ### Create a Linux user called ```catalog``` and a new PostgreSQL database
 1. Create a new Linux user called ```catalog```:
-..* run ```sudo adduser catalog```
+⋅⋅* run ```sudo adduser catalog```
 ..* enter in a new UNIX password (twice) when prompted
 ..* fill out information for ```catalog```
 1. Give the ```catalog``` user sudo permissions:
