@@ -2,9 +2,9 @@
 ## Project Overview
 To take a baseline installation of a Linux server and prepare it to host your web applications. To secure your server from a number of attack vectors, install and configure a database server, and deploy one of your existing web applications onto it.
 ## Details specific to the server set up
-* The IP address is 
+* The IP address is [35.154.239.151](35.154.239.151)
 * The SSH port used is 2200.
-* The URL to the hosted webpage is:
+* The URL to the hosted webpage is:[http://35.154.239.151/](http://35.154.239.151/) or [http://ec-35.154.239.151.compute-1.amazonaws.com/](http://ec2-35.154.239.151.compute-1.amazonaws.com/)
 ## Software Installed:
 * Apache2
 * mod_wsgi
