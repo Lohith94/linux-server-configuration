@@ -216,14 +216,14 @@ Deactivate the virtual environment by running deactivate
 <VirtualHost *:80>
 		ServerName XX.XX.XX.XX
 		ServerAdmin ben.in.campbell@gmail.com
-		WSGIScriptAlias / /var/www/nuevoMexico/nuevoMexico.wsgi
-		<Directory /var/www/nuevoMexico/nuevoMexico/>
+		WSGIScriptAlias / /var/www/item_catalog/item_catalog.wsgi
+		<Directory /var/www/item_catalog/Item_catalog/>
 			Order allow,deny
 			Allow from all
 			Options -Indexes
 		</Directory>
-		Alias /static /var/www/nuevoMexico/nuevoMexico/static
-		<Directory /var/www/nuevoMexico/nuevoMexico/static/>
+		Alias /static /var/www/item_catalog/Item_catalog/static
+		<Directory /var/www/item_catalog/Item_catalog/static/>
 			Order allow,deny
 			Allow from all
 			Options -Indexes
@@ -246,7 +246,7 @@ To activate the new configuration, you need to run:
 * Apache serves Flask applications by using a ```.wsgi file```; create a file called```item_catalog.wsgi``` in ```/var/www/item_catalog```
 * Add the following to the file:
 ```
-activate_this = '/var/www/nuevoMexico/nuevoMexico/venv/bin/activate_this.py'
+activate_this = '/var/www/item_catalog/Item_catalog/venv/bin/activate_this.py'
 execfile(activate_this, dict(__file__=activate_this))
 
 #!/usr/bin/python
@@ -355,7 +355,8 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 * If it did not work, the same error message will appear when restarting Apache
 Note: this change will be overwritten when Apache is updated.
 
-
+#### References
+[bencam](https://github.com/bencam/linux-server-configuration)
 
 
 
