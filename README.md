@@ -256,7 +256,7 @@ import logging
 logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0,"/var/www/item_catalog/")
 
-from item_catalog import app as application
+from Item_catalog import app as application
 application.secret_key = '12345'
 ```
 * Resart Apache: ```sudo service apache2 restart```
@@ -279,7 +279,7 @@ Note: if changes need to be made to the project files after the ownership of the
 ```sudo -u www-data vim INSERT_NAME_OF_FILE```
 (Note: vim can be replaced here with nano or another text editor.)
 ### Set up the database schema and populate the database
-* While in the ```/var/www/nuevoMexico/nuevoMexico/``` directory, activate the virtualenv by running ```. venv/bin/activate```
+* While in the ```/var/www/item_catalog/Item_catalog/``` directory, activate the virtualenv by running ```. venv/bin/activate```
 * Then run ```python database_setup.py```
 * Deactivate the virtualenv (run ```deactivate```)
 * Resart Apache again: ```sudo service apache2 restart```
