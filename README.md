@@ -256,6 +256,7 @@ import sys
 import logging
 logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0,"/var/www/item_catalog/")
+sys.path.insert(0,"/var/www/item_catalog/Item_catalog")
 
 from Item_catalog import app as application
 application.secret_key = '12345'
