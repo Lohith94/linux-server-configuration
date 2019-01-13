@@ -5,6 +5,7 @@ To take a baseline installation of a Linux server and prepare it to host your we
 * The IP address is [35.154.239.151](35.154.239.151)
 * The SSH port used is 2200.
 * The URL to the hosted webpage is:[http://35.154.239.151/](http://35.154.239.151/) or [http://ec-35.154.239.151.compute-1.amazonaws.com/](http://ec2-35.154.239.151.compute-1.amazonaws.com/)
+* grader password: lohithj94
 ## Software Installed:
 * Apache2
 * mod_wsgi
@@ -215,7 +216,7 @@ Deactivate the virtual environment by running deactivate
 ```
 <VirtualHost *:80>
 		ServerName XX.XX.XX.XX
-		ServerAdmin ben.in.campbell@gmail.com
+		ServerAdmin lohithj94@gmail.com
 		WSGIScriptAlias / /var/www/item_catalog/item_catalog.wsgi
 		<Directory /var/www/item_catalog/Item_catalog/>
 			Order allow,deny
