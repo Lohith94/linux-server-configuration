@@ -51,6 +51,7 @@ Note: While Amazon Lightsail provides a broswer-based connection method, this wi
 * Run ```sudo ufw allow www``` to set the ufw firewall to allow a basic HTTP server
 * Run ```sudo ufw allow 123/udp``` to set the ufw firewall to allow NTP
 * Run ```sudo ufw deny 22``` to deny port ```22``` (deny this port since it is not being used for anything; it is the default port for SSH, but this virtual machine has now been configured so that SSH uses port ```2200```)
+* Also run ```sudo ufw deny 22/tcp``` to deny port ```22/tcp``` if it still persists.
 * Run ```sudo ufw enable``` to enable the ufw firewall
 * Run ```sudo ufw status``` to check which ports are open and to see if the ufw is active; if done correctly, it should look like this:
 ```
